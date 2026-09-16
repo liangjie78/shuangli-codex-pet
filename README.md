@@ -1,16 +1,16 @@
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="霜璃 Codex v2 动态宠物：9 组动画、16 个观察方向和透明 WebP 图集">
+</p>
+
 # 霜璃 · Codex 动态宠物
 
-一只白发紫瞳、带双角、小翼与蓬松鳞尾的 Q 版龙族少女宠物。
+霜璃是一只白发紫瞳、带双角、小翼与蓬松鳞尾的 Q 版龙族少女宠物。仓库交付一个 Codex 宠物包：运行时只需要根目录的 `pet.json` 和 `spritesheet.webp`。
+
+## 先看结果
 
 ![霜璃动作总览](assets/contact-sheet.png)
 
-## 特性
-
-- Codex 宠物图集格式 v2（`spriteVersionNumber: 2`）
-- 9 组标准动画：待机、左右移动、挥手、跳跃、失败、等待、工作中、复核
-- 16 个观察方向，覆盖上、下、左、右及中间方向
-- 透明 WebP 图集，单格 `192 × 208`，完整图集 `1536 × 2288`
-- 不依赖脚本、运行库或构建工具
+当前包使用 Codex 宠物图集格式 v2（`spriteVersionNumber: 2`），包含 9 组标准动画、16 个观察方向和透明 RGBA WebP 图集。验证记录显示图集为 8 × 11 网格、总尺寸 `1536 × 2288`，没有透明残留错误。
 
 ## 最简单的安装方法（Windows）
 
@@ -37,7 +37,7 @@ git clone https://github.com/liangjie78/shuangli-codex-pet.git "$env:USERPROFILE
 
 > 该安装方式适用于支持本地 v2 宠物包的 Codex 桌面环境。仓库中的预览图片、GIF 和验证文件不是运行必需文件。
 
-## 动画预览
+## 动画与方向预览
 
 | 待机 | 左右移动 | 挥手 | 跳跃 |
 | --- | --- | --- | --- |
@@ -47,19 +47,27 @@ git clone https://github.com/liangjie78/shuangli-codex-pet.git "$env:USERPROFILE
 | --- | --- | --- | --- |
 | ![失败](previews/failed.gif) | ![等待](previews/waiting.gif) | ![工作中](previews/running.gif) | ![复核](previews/review.gif) |
 
-完整的 16 向观察效果见 [方向预览图](assets/look-directions.png)。
+完整的 16 向观察效果见 [方向预览图](assets/look-directions.png)。图集单格为 `192 × 208`，完整图集为 `1536 × 2288`。
 
 ## 文件说明
 
 ```text
 .
-├── pet.json                 # Codex 宠物配置
+├── pet.json                 # Codex 宠物配置，id 为 shuangli
 ├── spritesheet.webp         # 实际运行图集
 ├── validation.json          # v2 图集验证结果
 ├── SHA256SUMS.txt           # 图集完整性校验值
 ├── assets/                  # 静态总览与方向预览
 └── previews/                # 9 组动画 GIF
 ```
+
+验证图集完整性：
+
+```powershell
+(Get-FileHash .\spritesheet.webp -Algorithm SHA256).Hash
+```
+
+结果应与 `SHA256SUMS.txt` 中的值一致。
 
 ## 常见问题
 
@@ -73,13 +81,7 @@ git clone https://github.com/liangjie78/shuangli-codex-pet.git "$env:USERPROFILE
 
 **怎样验证图集没有损坏？**
 
-PowerShell 中运行：
-
-```powershell
-(Get-FileHash .\spritesheet.webp -Algorithm SHA256).Hash
-```
-
-结果应与 `SHA256SUMS.txt` 中的值一致。
+使用上面的 PowerShell 哈希命令，并与仓库中的 `SHA256SUMS.txt` 比较。
 
 ## 素材与权利说明
 
@@ -90,4 +92,3 @@ PowerShell 中运行：
 ## 相关链接
 
 - [OpenAI Codex 官方介绍与安装](https://learn.chatgpt.com/zh-Hans/docs/codex/cli)
-
